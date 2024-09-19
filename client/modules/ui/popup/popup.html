@@ -1,0 +1,19 @@
+<template>
+    <lightning-card  title={domain}>
+        <lightning-button label="More Info" slot="actions" onclick={openLink}></lightning-button>
+        <lightning-button label="Show Deployments" slot="actions" onclick={openDeployments}></lightning-button>
+        <template lwc:if={showData}> 
+            <p class="slds-p-horizontal_small">
+                <ui-running-deployment></ui-running-deployment>
+            </p>
+        </template>
+        <template lwc:else>
+            You are not on a Salesforce Screen
+        </template>
+        <p slot="footer">Card Footer new change</p>
+    </lightning-card>
+
+    <!-- <lightning-button label="This is button" onclick={openLink} variant="Base"></lightning-button> -->
+
+    
+</template>

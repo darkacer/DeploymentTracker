@@ -1,0 +1,48 @@
+<template>
+    <ui-header></ui-header>
+    <section class="section">
+        <div class="container">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <!-- <h1 class="title">Domain : {domain}</h1>
+                    <h1 class="title">Session : {session}</h1> -->
+                    <lightning-combobox
+                        name="progress"
+                        label="Org Name"
+                        value={value}
+                        placeholder="Select Progress"
+                        options={options}
+                        onchange={handleChange} >
+                    </lightning-combobox>
+                </div>
+                
+                <!-- <ui-counter></ui-counter> -->
+
+                
+
+            </div>
+        </div>
+    </section>
+    <ui-all-deployments></ui-all-deployments>
+
+    <!-- <ui-running-deployment></ui-running-deployment> -->
+
+    <!-- <div class="slds-m-top_small slds-m-bottom_medium">
+        <h2 class="slds-text-heading_small slds-m-bottom_small">
+            Click the buttons to activate the <code>onclick</code> handler and
+            view the label of the clicked button. more moreore meorkeor klklkl
+        </h2> -->
+        <!-- Base variant: Makes a button look like a link -->
+        <lightning-button
+            variant="base"
+            label="Base"
+            title="Looks like a link"
+            onclick={handleClick}
+            class="slds-m-left_x-small"
+        ></lightning-button>
+<!--
+        <lightning-button-icon icon-name="utility:settings"  disabled alternative-text="Settings" title="Settings"></lightning-button-icon>
+
+        
+    </div> -->
+</template>

@@ -1,0 +1,24 @@
+<template>
+    this is inside runningdeployment herer wetriw
+
+    {property1}
+  
+    <template lwc:if={showData}>  
+        <lightning-datatable
+                    key-field="Id"
+                    data={data}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={doSorting}
+                    hide-checkbox-column
+                    show-row-number-column="true"
+                    onrowaction={callRowAction}
+                    columns={columns}>
+        </lightning-datatable>
+        <lightning-button onclick={clearNotificationRequestStream} label="Clear Notification Stream" variant="Brand"></lightning-button>
+        
+    </template>
+    <template lwc:else>
+        There were no Deployments in past 2 days
+    </template>
+</template>

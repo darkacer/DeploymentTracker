@@ -1,0 +1,7 @@
+{
+    "modules": [
+        { "dir": "client/modules"},
+        { "npm": "lightning-base-components" },
+        { "npm": "@salesforce-ux/design-system" }
+    ]
+}
