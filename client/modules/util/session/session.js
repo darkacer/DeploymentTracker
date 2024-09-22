@@ -68,9 +68,10 @@ const getHostAndSession = async () => {
     const cookies = await chrome.cookies.getAll(secureCookieDetails);
     console.log(cookies);
 
-    let sessionCookie = cookies.find((c) => c.value.startsWith(orgId + "!"));
+    let sessionCookie = cookies.find((c) => c.value.startsWith(orgId + "!") && c.domain.endsWith("my.salesforce.com"));
     if (!sessionCookie) {
         return;
+
     }
 
     console.log(sessionCookie, 'session cookie here');
