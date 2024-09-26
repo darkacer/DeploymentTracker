@@ -1,9 +1,28 @@
 <template>
-    this is inside runningdeployment herer wetriw
-
-    {property1}
-  
     <template lwc:if={showData}>  
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="search" label="Filter Results" onchange={handleSearch}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="2" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+                <!-- <div class="slds-p-around_medium lgc-bg-inverse"> -->
+                    <!-- Button group: simple buttons -->
+                    <lightning-button-group>
+                        <lightning-button 
+                            onclick={clearAllNotificationRequestStream} 
+                            label="Clear All Notifications" 
+                            variant="destructive">
+                        </lightning-button>
+                        <!-- <lightning-button 
+                            onclick={clearOrgNotificationRequestStream} 
+                            variant="destructive" 
+                            label="Clear This Org Notification Stream">
+                        </lightning-button> -->
+                    </lightning-button-group>
+                <!-- </div> -->
+            </lightning-layout-item>
+        </lightning-layout>
         <lightning-datatable
                     key-field="Id"
                     data={data}
@@ -15,10 +34,22 @@
                     onrowaction={callRowAction}
                     columns={columns}>
         </lightning-datatable>
-        <lightning-button onclick={clearNotificationRequestStream} label="Clear Notification Stream" variant="Brand"></lightning-button>
-        
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h3 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group inverse variant with simple buttons.
+            </h3>
+        </div>
     </template>
     <template lwc:else>
-        There were no Deployments in past 2 days
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large slds-clearfix">
+            <h3 class="slds-text-heading_medium slds-m-bottom_medium slds-align_absolute-center">
+                There were no Deployments in past 2 days
+            </h3>
+            <p class="slds-m-bottom_medium slds-align_absolute-center">
+                Or your user does not have access to check Deployments, please check with your admin
+            </p>
+        </div>
     </template>
 </template>

@@ -24,7 +24,7 @@ export default class Popup extends LightningElement {
     }
 
     get showData(){
-        return this.domain != 'empty'
+        return this.domain != 'empty' && this.domain != null && this.domain != undefined
     }
 
     

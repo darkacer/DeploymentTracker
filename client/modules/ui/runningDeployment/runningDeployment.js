@@ -56,12 +56,14 @@ export default class RunningDeployment extends LightningElement {
     @track data;
     @track columns;
     showData = false;
-    property1 = true;
-    property2 = false;
+    // property1 = true;
+    // property2 = false;
     @track sortBy;
     @track sortDirection = "asc";
     domain = "empty";
     session = "empty";
+
+    @track ogRecords
 
     async connectedCallback() {
         // this.data = this.getData()
@@ -96,9 +98,9 @@ export default class RunningDeployment extends LightningElement {
             console.log("inside");
 
             this.data = response.records?.map((rec) => {
-                if (rec.Status == "InProgress") {
-                    this.property1 = rec.Id;
-                }
+                // if (rec.Status == "InProgress") {
+                //     this.property1 = rec.Id;
+                // }
 
                 let iconName = "utility:close";
                 let iconText = rec.Status;
@@ -152,6 +154,7 @@ export default class RunningDeployment extends LightningElement {
                 "Succeeded",
             ];
             this.data = sortByStatus(this.data, sortOrder);
+            this.ogRecords = this.data
 
             let existingRequestIds = JSON.parse(localStorage.getItem('requestIds'))?.map(e => e.Id)
 
@@ -173,15 +176,65 @@ export default class RunningDeployment extends LightningElement {
        
     }
 
-    clearNotificationRequestStream(event) {
+    
+    handleSearch(event) {
+        const searchKey = event.target.value.toLowerCase();
+
+        // let tempData = []
+        let tempData = this.ogRecords;
+    
+        if (searchKey) {
+    
+            if (tempData) {
+                let searchRecords = [];
+    
+                for (let record of tempData) {
+                    let valuesArray = Object.values(record);
+    
+                    for (let val of valuesArray) {
+                        console.log('val is ' + val);
+                        let strVal = String(val);
+    
+                        if (strVal) {
+    
+                            if (strVal.toLowerCase().includes(searchKey)) {
+                                searchRecords.push(record);
+                                break;
+                            }
+                        }
+                    }
+                }
+    
+                console.log('Matched Accounts are ' + JSON.stringify(searchRecords));
+                tempData = searchRecords;
+            }
+        }
+
+        this.data = [...tempData]
+    }
+    
+
+    clearAllNotificationRequestStream(event) {
         localStorage.setItem('requestIds', JSON.stringify([]))
         const recId = event.detail.row?.Id;
         chrome.runtime.sendMessage(
             { time: "2", id: recId, type:'clearNotifications' },
             function (response) {
                 console.log(response, "response herer");
+                return true
             }
         );
+    }
+
+    clearOrgNotificationRequestStream(event) {
+        localStorage.setItem('requestIds', JSON.stringify([]))
+
+        chrome.runtime.sendMessage(
+            {time:'3', type:'clearOrgNotifications', domainName:this.domain},
+            function(response) {
+                console.log(this.response, 'after org clearance')
+            }
+        )
     }
 
     // updateDataTable(existingRequestIds) {

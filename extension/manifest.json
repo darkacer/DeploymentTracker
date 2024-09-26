@@ -14,7 +14,8 @@
       "js": ["scripts/content.js"],
       "type": "module",
       "matches": [
-        "https://*/*"
+        "https://*.force.com/*",
+        "https://*.salesforce.com/*"
       ],
       "all_frames": true
     }
@@ -22,7 +23,8 @@
   "web_accessible_resources": [
     {
       "matches": [
-        "https://*/*"
+        "https://*.force.com/*",
+        "https://*.salesforce.com/*"
       ],
       "resources": ["scripts/*"]
     }
@@ -34,6 +36,7 @@
   },
   "permissions": ["cookies", "notifications", "storage", "alarms"],
   "host_permissions": [
-    "https://*/*"
+    "https://*.force.com/*",
+    "https://*.salesforce.com/*"
   ]
 }

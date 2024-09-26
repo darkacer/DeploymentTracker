@@ -24,20 +24,30 @@ chrome.runtime.onMessage.addListener(
         //         }
         //     );
         // }
-        if (request.time == 1){
+        if (request.time == '1'){
             createAlarm(request);
         }
 
-        if (request.time == 2){
+        if (request.time == '2'){
             requestArray = []
+        }
+
+        if(request.time == '3') {
+            clearOrgSpecific(request.domain)
         }
 
         sendResponse;
 
         // return requestArray
+
+        return true;
         
     }
 );
+
+function clearOrgSpecific(orgName) {
+    console.log(orgName, 'clear this org name')
+}
 
 function addToArray(request) {
     requestArray.push(
