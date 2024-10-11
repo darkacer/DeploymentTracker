@@ -31,7 +31,7 @@
   ],
   "background": {
     "service_worker": "scripts/background.js",
-    "persistent": true,
+    // "persistent": false,
     "type": "module"
   },
   "permissions": ["cookies", "notifications", "storage", "alarms"],

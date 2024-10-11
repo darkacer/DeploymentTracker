@@ -2,18 +2,18 @@
     <template lwc:if={showData}>  
         <lightning-layout multiple-rows>
             <lightning-layout-item size="6" padding="around-small">
-                <lightning-input type="search" label="Filter Results" onchange={handleSearch}></lightning-input>
+                <lightning-input type="search" label="Filter By Id, Status" onchange={handleSearch} placeholder="0Afxxxxxxxxx"></lightning-input>
             </lightning-layout-item>
             <lightning-layout-item size="2" padding="around-small"></lightning-layout-item>
             <lightning-layout-item size="4" padding="around-small">
                 <!-- <div class="slds-p-around_medium lgc-bg-inverse"> -->
                     <!-- Button group: simple buttons -->
                     <lightning-button-group>
-                        <lightning-button 
+                        <!-- <lightning-button 
                             onclick={clearAllNotificationRequestStream} 
                             label="Clear All Notifications" 
                             variant="destructive">
-                        </lightning-button>
+                        </lightning-button> -->
                         <!-- <lightning-button 
                             onclick={clearOrgNotificationRequestStream} 
                             variant="destructive" 
@@ -37,7 +37,7 @@
 
         <div class="slds-m-top_medium slds-m-bottom_x-large">
             <h3 class="slds-text-heading_medium slds-m-bottom_medium">
-                Button group inverse variant with simple buttons.
+                <!-- Button group inverse variant with simple buttons. -->
             </h3>
         </div>
     </template>

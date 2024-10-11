@@ -24,6 +24,9 @@ const columns = [
         },
     },
     // { label: 'Icon', initialWidth: 34, fieldName: 'Icon', cellAttributes: { iconName: { fieldName: 'dynamicIcon' }, iconAlternativeText: {fieldName: 'iconAltText'} } }
+    
+    /* removing button from here 
+    
     {
         type: "button",
         label: "Notify",
@@ -39,6 +42,8 @@ const columns = [
             variant: "Brand",
         },
     },
+
+    */
 ];
 
 const sortByStatus = (data, sortOrder) => {
@@ -159,7 +164,7 @@ export default class RunningDeployment extends LightningElement {
             let existingRequestIds = JSON.parse(localStorage.getItem('requestIds'))?.map(e => e.Id)
 
             this.data.forEach(e => {
-                if(existingRequestIds.includes(e.Id)){
+                if(existingRequestIds?.includes(e.Id)){
                     e.buttonDisabled = true
                 }
             })

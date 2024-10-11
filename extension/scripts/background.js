@@ -70,8 +70,9 @@ function createAlarm(request) {
     );
 }
 
-let queryInterval = setInterval(() => {
-    console.log("inside interval", requestArray)
 
-    // localStorage.setItem("requestArray", JSON.stringify(requestArray));      
-}, 10000)
+
+// let queryInterval = setInterval(() => {
+//     console.log("inside interval", requestArray)
+//     // localStorage.setItem("requestArray", JSON.stringify(requestArray));      
+// }, 10000)

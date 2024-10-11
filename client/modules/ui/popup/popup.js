@@ -6,6 +6,14 @@ export default class Popup extends LightningElement {
     domain = 'empty'
     session = 'empty'
 
+    get disableButton(){
+        return true
+    }
+
+    get infoButtonText() {
+        return 'Coming Soon...'
+    }
+
 
     async connectedCallback(){
         // this.data = await this.getData(10)
