@@ -1,4 +1,4 @@
-import { LightningElement, track } from "lwc";
+import { api, LightningElement, track } from "lwc";
 import { getRunningDeployments, getHostAndSession } from "util/session";
 
 const myBrowser = typeof chrome === "undefined" ? browser : chrome;
@@ -61,6 +61,8 @@ export default class RunningDeployment extends LightningElement {
     @track data;
     @track columns;
     showData = false;
+
+    @api params;
     // property1 = true;
     // property2 = false;
     @track sortBy;
@@ -70,16 +72,36 @@ export default class RunningDeployment extends LightningElement {
 
     @track ogRecords
 
+    @api
+    refresh(params) {
+        this.params = params
+        this.connectedCallback()
+    }
+
     async connectedCallback() {
         // this.data = this.getData()
-        console.log("this", this.data);
-        this.cookie = await getHostAndSession();
-        console.log("This is new", this.cookie);
-        this.domain = this.cookie?.domain;
-        this.session = this.cookie?.session;
-        this.columns = columns;
+        console.log('im inside running dep, params =>', this.params);
 
-        let responseText = await getRunningDeployments();
+        this.data = []
+        this.showData = false
+        
+        let responseText = ''
+        if(this.params) {
+
+            this.session = this.params.session
+            this.domain = this.params.domain
+            responseText = await getRunningDeployments(this.params)
+
+        } else {
+            console.log("this", this.data);
+            this.cookie = await getHostAndSession();
+            console.log("This is new", this.cookie);
+            this.domain = this.cookie?.domain;
+            this.session = this.cookie?.session;
+            
+            responseText = await getRunningDeployments(null);
+        }
+        this.columns = columns;
 
         if (!responseText) {
             return;

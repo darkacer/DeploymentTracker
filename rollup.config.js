@@ -6,8 +6,8 @@ import copy from 'rollup-plugin-copy';
 
 
 export default {
-    // input: 'client/main.js',
-    input: 'client/popup.js',
+    input: 'client/main.js',
+    // input: 'client/popup.js',
     // input: ['client/main.js', 'client/popup.js'],
     output: {
         dir: 'dist/popup',

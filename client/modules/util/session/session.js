@@ -6,9 +6,17 @@ const getCurrentTab = async () => {
     return tab;
 }
 
-const getRunningDeployments = async () => {
+const getRunningDeployments = async (params) => {
+
+    let details
+
+    if(params) {
+        console.log(params);
+        details = params
+    } else {
+        details = await getHostAndSession()
+    }
     const myHeaders = new Headers();
-    let details = await getHostAndSession()
     if (!details) {
         return
     }

@@ -7,7 +7,7 @@ export default class Popup extends LightningElement {
     session = 'empty'
 
     get disableButton(){
-        return true
+        return false
     }
 
     get infoButtonText() {
